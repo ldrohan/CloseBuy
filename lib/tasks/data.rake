@@ -29,10 +29,24 @@ namespace :data do
           @item.email = email_scrape
         end
 
+        if listing_page.at_css('img#iwi')
+        	@item.image = listing_page.css('img#iwi')[0]['src']
+        end	
+
+        # if listing_page.at_css('section#postingbody a')
+        # 	@contact_phone = listing_page.css('section#postingbody a')[0]['href']
+        # 	@item.phone = phone_scrape
+        # end
+        	
+        if listing_page.at_css('section#postingbody')
+        	@item.description = listing_page.css('section#postingbody').text
+        end	
+        
         @item.save
 
       end
     end
+ 
   end
 end
 
