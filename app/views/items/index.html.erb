@@ -1,0 +1,14 @@
+Hello World!</br>
+<%= @title  %></br>
+<%= @latitude  %></br>
+<%= @longitude %></br>
+<%= @contact %></br>
+<%= @contact_phone %></br>
+<%= @email_info %></br>
+<%= @phone  %></br>
+
+
+<%@thumbnails.each do |i|  %>
+  <%=i["href"]%></br>
+  <%= image_tag("#{i['href']}")  %>
+<% end %>
