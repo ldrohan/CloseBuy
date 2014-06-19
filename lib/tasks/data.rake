@@ -1,21 +1,28 @@
 namespace :data do
-  desc "Scraping Craigslist Data"
+	desc "Scraping Craigslist Data"
   # task :import => :environment do
   task :scrape => :environment do
-
+  	include ItemsHelper
   	require "nokogiri"
   	require "open-uri"
 
     page = Nokogiri::HTML(open("http://sfbay.craigslist.org/sss/"))
     @results = page.css('span.pl a')
     @urls = []
+   
     @results.each do |url|
     	@urls.push(url['href'])
     end	
+   
     @urls.each do |i|
     	listing_page = Nokogiri::HTML(open("http://sfbay.craigslist.org/#{i}"))
     	@item = Item.find_or_initialize_by(name: listing_page.css('title').text)
     	@item.name = listing_page.css('title').text
+    	if listing_page.at_css('a#replylink')
+    		@email = listing_page.css('a#replylink')[0]['href']
+    		@item.email = email_scrape
+    	end	
+   
     	@item.save
     end
   end
