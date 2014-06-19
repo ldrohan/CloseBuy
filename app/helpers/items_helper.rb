@@ -5,7 +5,7 @@ module ItemsHelper
 	end
 
 	def phone_scrape
-		page = Nokogiri::HTML(open("http://sfbay.craigslist.org/#{@contact_phone}"))
-		page.css('body').text
+		  page = Nokogiri::HTML(open("http://sfbay.craigslist.org/#{@contact_phone}"))
+			page.css('body').text
 	end	
 end

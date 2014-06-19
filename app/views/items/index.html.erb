@@ -1,14 +1,20 @@
 Hello World!</br>
-<%= @title  %></br>
-<%= @latitude  %></br>
-<%= @longitude %></br>
-<%= @contact %></br>
-<%= @contact_phone %></br>
-<%= @email_info %></br>
-<%= @phone  %></br>
+<%#= @title  %></br>
+<%#= @latitude  %></br>
+<%#= @longitude %></br>
+<%#= @contact %></br>
+<%#= @contact_phone %></br>
+<%#= @email_info %></br>
+<%#= @phone  %></br>
 
 
-<%@thumbnails.each do |i|  %>
-  <%=i["href"]%></br>
-  <%= image_tag("#{i['href']}")  %>
+<%#@thumbnails.each do |i|  %>
+  <%#=i["href"]%></br>
+  <%#= image_tag("#{i['href']}")  %>
+<%# end %>
+
+<% @urls.each do |i| %>
+  <%= i %>
 <% end %>
+<%= @urls %>
+<%#= @results %>
