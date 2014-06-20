@@ -30,23 +30,34 @@ namespace :data do
         end
 
         if listing_page.at_css('img#iwi')
-        	@item.image = listing_page.css('img#iwi')[0]['src']
-        end	
+          @item.image = listing_page.css('img#iwi')[0]['src']
+        end
 
-        # if listing_page.at_css('section#postingbody a')
-        # 	@contact_phone = listing_page.css('section#postingbody a')[0]['href']
-        # 	@item.phone = phone_scrape
-        # end
-        	
+        if listing_page.at_css('section#postingbody a')
+          @contact_url = listing_page.css('section#postingbody a')[0]['href']
+
+          @phone = []
+          @phone_object = phone_scrape
+
+          if @phone_object != nil
+            # @phone_object.each do |i|
+            #  	@phone.push(i)
+            # end
+
+            @item.phone = @phone_object.area_code + @phone_object.number
+          end
+
+        end
+
         if listing_page.at_css('section#postingbody')
-        	@item.description = listing_page.css('section#postingbody').text
-        end	
-        
+          @item.description = listing_page.css('section#postingbody').text
+        end
+
         @item.save
 
       end
     end
- 
+
   end
 end
 
