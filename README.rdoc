@@ -1,3 +1,3 @@
-CloseBuy is a Craigslist Webscraper API I created using Nokogiri as a portion of my final project for General Assembly's Web Development Immersive Course. The API scrapes all for sale items in the San Francisco Bay Area's For Sale section on Craigslist. 
+CloseBuy is a Craigslist Webscraper API I created using Nokogiri as a portion of my final project for General Assembly's Web Development Immersive Course. The API scrapes the Item title, Item Description, Main Photograph, E-mail, and Phone number for all for sale items in the San Francisco Bay Area's For Sale section on Craigslist. 
 
-To see the front end/other hald of the project, please visit http://nearbuysf.herokuapp.com
+To see the front end/other half of the project, please visit http://nearbuysf.herokuapp.com
