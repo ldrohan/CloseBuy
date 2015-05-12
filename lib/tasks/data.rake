@@ -6,7 +6,7 @@ namespace :data do
     require "open-uri"
 
     # Scrapes All for sale item URLS from home page
-    page = Nokogiri::HTML(open("http://sfbay.craigslist.org/sss/"))
+    page = Nokogiri::HTML(open("http://sfbay.craigslist.org/search/sss/"))
     @results = page.css('span.pl a')
     @urls = []
 
@@ -26,14 +26,14 @@ namespace :data do
         @item.long = map[0]["data-longitude"]
 
         # If replylink present on page, email scrape method called from helper
-        if listing_page.at_css('a#replylink')
-          @email = listing_page.css('a#replylink')[0]['href']
+        if listing_page.at_css('span.replylink a')
+          @email = listing_page.css('span.replylink a')[0]['href']
           @item.email = email_scrape
         end
 
         # If image tag present, main image stored to DB
-        if listing_page.at_css('img#iwi')
-          @item.image = listing_page.css('img#iwi')[0]['src']
+        if listing_page.at_css('div.tray')
+          @item.image = listing_page.css('div.tray div img')[0]['src']
         end
 
         # Checks contact info button for phone number and saves if present, if not - moves on to scrape body for number.
